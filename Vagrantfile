@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |c|
   c.vm.box = "debian/buster64"
   c.vm.provision "file", source: "./file_multi", destination: "~/file_multi"
-  v.vm.box_check_update = false
+  c.vm.box_check_update = false
 
   c.vm.define "vm1" do |vm1|
     vm1.vm.network "private_network", ip: "192.168.100.10"
@@ -14,5 +14,5 @@ Vagrant.configure("2") do |c|
     vm2.vm.network "forwarded_port", guest: 3000, host: 3001
     vm2.vm.provision "file", source: "./file_vm2", destination: "~/file_vm2"
   end
-  
+
 end
